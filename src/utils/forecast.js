@@ -16,10 +16,9 @@ async function forecast(latitude, longitude, callback) {
         return callback("Unable to connect to weather service!", undefined);
     }
 
+    // User input and API server erros
     try {
         data = await response.json();
-
-        // User input error
         if (data.error) throw new Error("Unable to find location! ");
     }
     catch (e) {
@@ -33,12 +32,13 @@ async function forecast(latitude, longitude, callback) {
         current: {
             weather_descriptions: [description],
             temperature,
-            feelslike
+            feelslike,
+            humidity
         }
     } = data;
 
     callback(undefined, 
-        `${description}. It is currently ${temperature} degrees out. It feels like ${feelslike} degress out.`);
+        `${description}. It is currently ${temperature} degrees out. It feels like ${feelslike} degress out, with a humidity of ${humidity}%`);
 }
 
 

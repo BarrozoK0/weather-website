@@ -15,11 +15,9 @@ async function geocode(address, callback) {
         return callback("Unable to connect to location services!", undefined);
     }
 
-    // 
+    // User input and API server erros
     try {
         data = await response.json();
-
-        // User input error
         if (data.message || data.features.length == 0) {
             throw new Error("Enable to find location");
         }
