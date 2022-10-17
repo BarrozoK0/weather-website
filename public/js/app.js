@@ -1,5 +1,3 @@
-console.log("Client side javacript file is loaded!");
-
 const baseAddress = "http://localhost:3000/weather?address=";
 
 
