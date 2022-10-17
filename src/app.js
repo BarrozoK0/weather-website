@@ -16,13 +16,18 @@ const staticPath = path.join(currentDir, "../public")
 const viewsPath = path.join(currentDir, "../templates/views")
 const partialsPath = path.join(currentDir, "../templates/partials")
 
-// Setup handlebars engine and template locations
+// Init app
 const app = express();
+
+// Set port for heroku
+const port = process.env.PORT || 3000
+
+// Set up handlebars engine and template locations
 app.set("view engine", "hbs")
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath)
 
-// Setup directory to serve static files
+// Set up directory to serve static files
 app.use(express.static(staticPath));
 
 /* Server routes */
@@ -121,6 +126,6 @@ app.get("*", (req, res) => {
 
 
 // Start web server on port 3000
-app.listen(3000, () => {
-    console.log("Server is up on port 3000");
+app.listen(port, () => {
+    console.log("Server is up on port " + port);
 });

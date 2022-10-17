@@ -1,4 +1,4 @@
-const baseAddress = "http://localhost:3000/weather?address=";
+const baseAddress = "/weather?address=";
 
 
 const weatherForm = document.querySelector("form");
